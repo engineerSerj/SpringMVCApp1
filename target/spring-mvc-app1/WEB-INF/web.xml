@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--web.xml создал maven т.к. мы выбрали архетип веб апп
+он нужен за тем что сервер считывает содержимое web.xml и здесь мы описываем что мы хотим чтобы сервер делал
+здесь мы хотим чтобы все http запросы от пользователей перенаправлял на d.s. и когда запрос будет попадать
+в сервер а потом в d.s. этот запрос будет попадать в наше spring-mvc приложение, на этом уроке конфигурируем
+ сервер с помощью web xml но потом будем конфигурировать с помощью жава кода-->
+<web-app
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+  id="WebApp_ID" version="3.1">
+
+  <display-name>spring-mvc-app1</display-name>
+
+  <absolute-ordering/>
+
+  <servlet> <!--с помощью тега сервлет мы создаем наш dispatcher-servlet -->
+  <servlet-name>dispatcher</servlet-name>
+  <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+<!--  класс который используется для создания d.s. мы его берем из нашей библиотеки спринг фрэймворк, он уже реализован за нас-->
+  <init-param>
+    <param-name>contextConfigLocation</param-name>
+    <!--при создании d.s. мы должны ему указать путь до того файла где находится spring config. пока тоже xml конфигурация но потом java config-->
+    <param-value>/WEB-INF/applicationContextMVC.xml</param-value> <!--в этом файле будем конфигурировать наше spring-mvs приложение-->
+  </init-param>
+  <load-on-startup>1</load-on-startup> <!--этот параметр указывает на то что d.s. нужно в первую очередь загружать на наш сервер
+   и дальше с помощью тэг servlet-mapping мы обращаемся к d.s. и говорим что любой url который набирает пользователь в браузере
+    любой этот запрос будет перенаправлен в d.s. и он перенаправит запрос в правильный контроллер который мы создадим-->
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>dispatcher</servlet-name>
+    <url-pattern>/</url-pattern>
+    <!--/ - означает что это любой запрос. и он будет направлен в dispatcher-->
+  </servlet-mapping>
+
+</web-app>
+
+
