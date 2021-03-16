@@ -13,7 +13,7 @@
 
     <context:component-scan base-package="ru.serj.springlessonAlishev"/>
 
-    <mvc:annotation-driven/> <!--включает необходимые аннотации для впринг-мвс приложения-->
+    <mvc:annotation-driven/> <!--включает необходимые аннотации для Spring MVC приложения-->
     <!--эти 3 бина обычно копируем в новое приложение -->
     <bean id="templateResolver" class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
         <property name="prefix" value="/WEB-INF/views/"/> <!--отвечает за то где у нас лежат наши шаблоны, представления, HTML файлы-->
