@@ -13,7 +13,7 @@ import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 // SpringConfig заменяет нам applicationContextMVC.xml
 @Configuration
-@ComponentScan("ru.serj.springlessonAlishev")
+@ComponentScan("ru.serj.springlessonAlishev")// сканирует в указанной папке и в подпапках
 @EnableWebMvc // т.к. у нас Spring MVC приложение, которое поддерживает веб функции, эта аннотация равноценна
 // тэгу <mvc:annotation-driven/> <!--включает необходимые аннотации для Spring MVC приложения-->
 public class SpringConfig implements WebMvcConfigurer {
