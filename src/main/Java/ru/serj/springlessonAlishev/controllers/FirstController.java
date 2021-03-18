@@ -11,6 +11,32 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping("/first")
 public class FirstController {
+    @GetMapping("/calculator")
+    public String webCalculator(HttpServletRequest request, Model model){
+        int a = Integer.parseInt(request.getParameter("a"));
+        int b = Integer.parseInt(request.getParameter("b"));
+        String result;
+        String action= request.getParameter("action");
+        switch (action){
+            case "multiplication":
+                result = String.valueOf(a*b);
+                break;
+            case "addition":
+                result = String.valueOf(a+b);
+                break;
+            case "subtraction":
+                result = String.valueOf(a-b);
+                break;
+            case "division":
+                result = String.valueOf((double) a/b);
+                break;
+            default: result="invalid action";
+        }
+        model.addAttribute("result", a+" "+action+" "+b+" = "+ result);
+
+        return "first/calculator";
+    }
+
     //Давайте с помощью модели передадим эти параметры HTTP запроса в представление и отобразим их пользователю
     @GetMapping("/hello")
     public String helloPage(@RequestParam(value="name", required = false) String name,
