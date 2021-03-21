@@ -25,4 +25,10 @@ public class PersonDAO {
         //фильтруем по id и возвращаем если нашли или null
         return people.stream().filter(person -> person.getId() == id).findAny().orElse(null);
     }
+
+    public void save(Person person){
+        //кроме того мы не будем сами указывать id в форме /new, будем присваивать автоматически при добавлении в БД
+        person.setId(++PEOPLE_COUNT);
+        people.add(person);
+    }
 }
