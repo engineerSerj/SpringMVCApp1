@@ -35,4 +35,7 @@ public class PersonDAO {
         Person personToBeUpdated = show(id);
         personToBeUpdated.setName(updatedPerson.getName());
     }
+    public void delete(int id){
+        people.removeIf(person -> person.getId()==id);// условие при котором мы хотим удалять объект из листа, если выражение тру то удаляем, проходимся по списку и если предикат возвращает тру то удаляем
+    }
 }

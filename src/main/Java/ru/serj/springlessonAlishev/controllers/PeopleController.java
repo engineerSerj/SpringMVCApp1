@@ -58,13 +58,18 @@ public class PeopleController {
             model.addAttribute("person", personDAO.show(id));//внедряем в модель человека с этим id , его будем отображать на форме редактирования и к нему будет доступ в нашем представлении, чтобы в самой форме поля уже небыли пустыми
             return "people/edit";
     }
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}")//чтобы сюда направлялся запрос нам нужно создать тот самый фильтр в классе конфигурации MySpringDispatcherServletInitialaizer
     public String update(@ModelAttribute("person")Person person, @PathVariable("id") int id){
      //принимаем с помощью @ModelAttribute("person")объект person из формы, @PathVariable("id") принимает id из адреса
      //теперь мы должны найти человека с таким id в бд и заменить его значения на те что пришли из формы, на те что лежат в person полученном с помощью @ModelAttribute
       // это будем делать внутри DAO
         personDAO.update(id, person);
         return  "redirect:/people";
+    }
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable("id") int id){
+            personDAO.delete(id);
+            return "redirect:/people";
     }
 
 }

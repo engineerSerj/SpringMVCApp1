@@ -8,5 +8,12 @@
 <!--теперь для конкретного человека будем отображать его имя и его id-->
 <p th:text="${person.getName()}">VALUE</p>
 <p th:text="${person.getId()}">VALUE</p>
+
+<a th:href="@{/people/{id}/edit(id=${person.getId()})}">Edit</a>
+
+<!--создадим кнопку для удаления, она будет в виде формы потому что мы не можем посылать DELETE запрос с помощью тэга <a, с помощью него мы можем посылать только GET-запрос-->
+<form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
+    <input type="submit" value="Delete"> <!--в этой не форме нет полей только кнопка delete отправляющая запрос на адрес @{/people/{id}/edit(id=${person.getId()})-->
+</form>
 </body>
 </html>

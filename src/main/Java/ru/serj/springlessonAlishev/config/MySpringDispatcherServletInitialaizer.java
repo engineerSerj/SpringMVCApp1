@@ -12,13 +12,14 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 // это класс который исполняет роль Spring  web.xml
 public class MySpringDispatcherServletInitialaizer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
+    //код для использования фильтра этот метод выполняет метод добавляющий к нашему приложению фильтр
     @Override
     public void onStartup(ServletContext aServletContext) throws ServletException {
         super.onStartup(aServletContext);
         registerCharacterEncodingFilter(aServletContext);
         registerHiddenFieldFilter(aServletContext);
     }
-
+    //код для использования фильтра
     private void registerHiddenFieldFilter(ServletContext aContext) {
         aContext.addFilter("hiddenHttpMethodFilter",
                 new HiddenHttpMethodFilter()).addMappingForUrlPatterns(null ,true, "/*");
