@@ -2,10 +2,10 @@
 <html lang="en", xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>New person</title>
 </head>
 <body>
-<!--все адреса в атрибуте th:action тэга form на которые URL форма будет передавать свои данные в Thymeleaf пишуться в синтаксисе @{/xxx }
+<!--все адреса в атрибуте th:action тэга form на которые URL форма будет передавать свои данные в Thymeleaf пишутся в синтаксисе @{/xxx }
 и в атрибуте th:object передаем на вход тот самый объект класса Person под ключем "person" который мы положили в model, к этому объекту мы обращаемся и для этого объекта будет создаваться форма-->
 <form th:method="POST" th:action="@{/people}" th:object="${person}">
     <label for="name">Enter name:</label>

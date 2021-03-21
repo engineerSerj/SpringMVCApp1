@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en", xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update person</title>
+</head>
+<body>
+
+<form th:method="PATCH" th:action="@{/people/{id} (id=${person.getID})}" th:object="${person}"><!-- используем именно th:method="PATCH", а не method="PATCH" т.к. HTML не поддерживает PATCH, а thymeleaf автоматически возьмет это значение создаст скрытое поле и поместит туда это значение PATCH которое мы прочитаем на стророне Spring с помощью фильтра-->
+    <!--данные с этой формы посылаются уже на th:action="@{/people/{id}, id получаем из модели которую передали с ключем "person" в атрибуте th:object передаем на вход тот самый объект класса Person под ключем "person" который мы положили в model-->
+    <!--th:object возьмет этот атрибут person возьмет значение поля name которое есть у этого объекта и вставит его в поле, когда зайдем на страницу редактирования поля уже там будет значение этого человека-->
+    <label for="name">Enter name:</label>
+
+    <input type="text" th:field="*{name}" id="name"/>
+    <br/>
+    <input type="submit" value="Create!"/>
+</form>
+</body>
+</html>
