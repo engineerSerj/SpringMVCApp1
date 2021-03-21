@@ -70,9 +70,9 @@
 
     <!--часть Hibernate для валидации наших model с помощью аннотаций, теперь в нашем классе Person мы можем с помощью аннотации устанавливать правила валидации которые будем проверять уже в Controller-->
     <dependency>
-      <groupId>org.hibernate</groupId>
+      <groupId>org.hibernate.validator</groupId>
       <artifactId>hibernate-validator</artifactId>
-      <version>5.3.4.Final</version>
+      <version>6.1.6.Final</version>
     </dependency>
 
   </dependencies>
